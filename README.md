@@ -1,19 +1,34 @@
-# StackStorm Exchange Incubator
+# Palo Alto firewall Pack
 
-### What is this?
+Block threats on **Palo Alto Networks (_PAN_)** firewalls. Pack is using PAN **HTTP server profiles** (webhooks) which are available in PAN-OS version 8+
+## Configuration
 
-This repository is a very special place where user-submitted packs get reviewed, perfected, approved, and finally transferred to the Exchange.
+Copy the example configuration in **paloalto.yaml.example** to */opt/stackstorm/configs/paloalto.yaml* and edit as required.
+In order to obtain *Palo Alto API key*, substitue firewall with IP address of firewall , put the username and passowrd , then run the command below.
+```
+curl -kgX GET 'https://firewall/api/?type=keygen&user=admin&password=password'
+```
 
-If you want to submit your pack, it's simple! **Fork this repo, create a subdirectory with your pack, and open a Pull Request.** We'll take it from here. Even if your pack is work-in-progress, you can still submit it to get advice and early feedback from our engineers! Or ping us [on Slack](https://stackstorm.com/community-signup), which is generally the best place to get advice from the StackStorm Community.
+Example configuration:
+```
+---
+  api_key: "palo_alto_api_key"
+  tag: "st2"
+```
+## Using the pack
 
-Before you submit a pack, make sure to read the [Create and Contribute a Pack](https://docs.stackstorm.com/reference/packs.html) section of our documentation.
+Configure http webhook on PAN following  [PAN-OS 8.0 documentation](https://www.paloaltonetworks.com/documentation/80/pan-os/web-interface-help/device/device-server-profiles-http)
 
-Here's N.E.P.T.R. the StackStorm Exchange Governor, giving you a thumbs-up:
+![Snapshot of PAN webhook configuration - payload format](https://github.com/IrekRomaniuk/paloalto_blockthreats/blob/master/pan-webhook.PNG)
 
-![](http://i.imgur.com/3bqVAh0.gif)
+Name of _st2 server_ has to match st2 certificate imported to PAN. To get *st2 API key*, run the command below
+ ```
+st2 apikey create -k -m '{"used_by": "PAN"}'
+ ```
+See my blog post [here](https://medium.com/@IrekRomaniuk/stackstorm-pack-for-palo-alto-networks-firewall-a7d8a4ea6655).
 
-## Contributors License Agreement
+## Actions
 
-By contributing you agree that these contributions are your own (or approved by your employer) and
-you grant a full, complete, irrevocable copyright license to all users and developers of the
-project, present and future, pursuant to the license of the project.
+Currently, the following actions listed below are supported:
+- register IP to DAG (Dynamic Address Group)
+
