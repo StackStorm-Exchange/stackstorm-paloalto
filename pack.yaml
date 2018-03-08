@@ -1,10 +1,10 @@
 ---
 ref: paloalto
 name: paloalto
-description: Block threats on Palo Alto Networks firewalls
+description: Interact with Palo Alto firewalls
 keywords:
     - firewalls
     - threats
-version: 0.1.0
-author: Irek Romaniuk
-email: irek.romaniuk@gmail.com
+version: 0.2.0
+author: Irek Romaniuk, John Anderson
+email: irek.romaniuk@gmail.com, lampwins@gmail.com

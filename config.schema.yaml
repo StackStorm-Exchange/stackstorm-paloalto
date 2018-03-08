@@ -7,3 +7,38 @@
     description: "Palo Alto object tag"
     type: "string"
     required: true
+
+firewall:
+  type: "object"
+  required: true
+  patternProperties:
+      "^\\w+":
+        "$ref": "#/properties/firewalls"
+  additionalProperties: false
+
+firewalls:
+  type: "object"
+  properties:
+    host:
+      description: "Hostname or IP address of firewall."
+      type: "string"
+      required: true
+    port:
+      description: "TCP port number for the firewall connection."
+      type: "integer"
+      default: 443
+    api_username:
+      description: "Authentication user-id for the firewall api."
+      type: "string"
+      required: false
+    api_password:
+      description: "The password of the specified user."
+      type: "string"
+      secret: true
+      required: false
+    api_key:
+      description: "The api key for this user."
+      type: "string"
+      secret: true
+      required: false
+  additionalProperties: false

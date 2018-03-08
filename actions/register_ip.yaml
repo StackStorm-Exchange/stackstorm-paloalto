@@ -1,0 +1,23 @@
+---
+name: register_ip
+runner_type: python-script
+description: Register a new IP/tag(s) or update an existing registration
+enabled: true
+entry_point: register_ip.py
+parameters:
+  ip:
+    type: string
+    description: IP Address to register
+    required: true
+  tag:
+    type: string
+    description: Single tag to register to the IP address
+    required: false
+  tag_list:
+    type: array
+    description: List of tags to register to IP address
+    required: false
+  firewall:
+    type: string
+    description: Predefined firewall from pack config
+    required: false
