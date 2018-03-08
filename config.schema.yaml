@@ -1,13 +1,4 @@
 ---
-  api_key:
-    description: "Palo Alto API key"
-    type: "string"
-    required: true
-  tag:
-    description: "Palo Alto object tag"
-    type: "string"
-    required: true
-
 firewall:
   type: "object"
   required: true
