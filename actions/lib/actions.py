@@ -27,7 +27,7 @@ class BaseAction(Action):
         device = None
         try:
             device = PanDevice.create_from_device(
-                hostname=firewall_config.get('hostname'),
+                hostname=firewall_config.get('host'),
                 api_username=firewall_config.get('api_username'),
                 api_password=firewall_config.get('api_password'),
                 api_key=firewall_config.get('api_key'),
