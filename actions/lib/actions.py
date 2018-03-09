@@ -37,7 +37,7 @@ class BaseAction(Action):
         except PanDeviceError as e:
             raise Exception("Failed to connect to firewall {} with pandevice error {}".format(firewall_config, e))
 
-        return device
+        return device.refresh()
 
     def get_panorama(self, firewall, device_group):
         """
@@ -52,5 +52,6 @@ class BaseAction(Action):
             device = device.find(device_group, DeviceGroup)
             if device is None:
                 raise Exception("DeviceGroup {} does not exist on device {}!".format(device_group, firewall))
+            device.refresh()
 
         return device
