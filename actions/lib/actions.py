@@ -1,5 +1,6 @@
 from pandevice.base import PanDevice
 from pandevice.errors import PanDeviceError
+from pandevice.panorama import Panorama, DeviceGroup
 
 from st2common.runners.base_action import Action
 
@@ -35,5 +36,20 @@ class BaseAction(Action):
             )
         except PanDeviceError as e:
             raise Exception("Failed to connect to firewall {} with pandevice error {}".format(firewall_config, e))
+
+        return device
+
+    def get_panorama(self, firewall, device_group):
+        """
+        If the device is a Panorama and device_group is passed, return the device group else just return the device.
+        """
+        device = self.get_pandevice(firewall)
+        if device_group:
+            if not isinstance(device, Panorama):
+                raise Exception("Device {} is not a Panorama!".format(firewall))
+
+            device = device.find(device_group, DeviceGroup)
+            if device is None:
+                raise Exception("DeviceGroup {} does not exist on device {}!".format(device_group, firewall))
 
         return device

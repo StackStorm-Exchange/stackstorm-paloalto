@@ -1,9 +1,9 @@
 from lib.actions import BaseAction
 
 
-class RegisterIP(BaseAction):
+class UnregisterIP(BaseAction):
     """
-    Register IP/tag(s) to a firewall
+    Unregister IP/tag(s) to a firewall
     """
     def run(self, ip, tag, tag_list, firewall):
 
@@ -13,10 +13,10 @@ class RegisterIP(BaseAction):
         if tag and tag_list:
             return False, "You must only specify either tag OR tag_list but not both!"
 
-        register_tag = tag or tag_list
+        unregister_tag = tag or tag_list
 
         device = self.get_pandevice(firewall)
 
-        device.userid.register(ip, register_tag)
+        device.userid.unregister(ip, unregister_tag)
 
-        return True, "{} successfully registered to {}".format(",".join(register_tag), ip)
+        return True, "{} successfully unregistered to {}".format(",".join(unregister_tag), ip)
