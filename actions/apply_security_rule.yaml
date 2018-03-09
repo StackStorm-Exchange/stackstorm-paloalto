@@ -81,7 +81,7 @@ parameters:
     enum: 
       - universal
       - intrazone
-      - intrazone
+      - interzone
     default: universal
   negate_source:
     type: boolean
