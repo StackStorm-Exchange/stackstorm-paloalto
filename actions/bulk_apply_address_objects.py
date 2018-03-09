@@ -12,6 +12,7 @@ class BulkApplyAddressObjects(BaseAction):
         valid_keys = set(['name', 'description', 'value', 'type', 'tag'])
 
         device = self.get_panorama(firewall, device_group)
+        AddressObject.refreshall(parent=device)
         for obj in objects:
             if not isinstance(obj, dict):
                 raise ValueError("{} is not a valid Address object!".format(obj))

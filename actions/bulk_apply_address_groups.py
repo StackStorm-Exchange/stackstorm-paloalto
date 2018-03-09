@@ -12,6 +12,7 @@ class BulkApplyAddressGroup(BaseAction):
         valid_keys = set(['name', 'description', 'static_value', 'dynamic_value', 'tag'])
 
         device = self.get_panorama(firewall, device_group)
+        AddressGroup.refreshall(parent=device)
         for obj in objects:
             if not isinstance(obj, dict):
                 raise ValueError("{} is not a valid AddressGroup object!".format(obj))
