@@ -1,0 +1,39 @@
+---
+name: apply_address_object
+runner_type: python-script
+description: Add a new address object or update an existing one
+enabled: true
+entry_point: apply_address_object.py
+parameters:
+  name:
+    type: string
+    description: Name of the object
+    required: true
+  value:
+    type: string
+    description: Value of the object
+    required: false
+  type:
+    type: string
+    description: String value of dynamic match criteria
+    default: ip-netmask
+    enum:
+      - ip-netmask
+      - ip-range
+      - fqdn
+  description:
+    type: string
+    description: Object description
+    required: false
+  tag:
+    type: array
+    description: List of static administrative tags to assign to the object
+    required: false
+  device_group:
+    type: string
+    description: If interacting with a Panorama, the device group to add the object to. Will default to Shared if using Panorama
+    required: false
+  firewall:
+    type: string
+    description: Predefined firewall from pack config
+    required: false

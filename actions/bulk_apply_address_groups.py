@@ -9,7 +9,7 @@ class BulkApplyAddressGroup(BaseAction):
     """
     def run(self, device_group, firewall, objects):
 
-        valid_keys = set(['name', 'description', 'static_value', 'description', 'dynamic_value', 'tag'])
+        valid_keys = set(['name', 'description', 'static_value', 'dynamic_value', 'tag'])
 
         device = self.get_panorama(firewall, device_group)
         for obj in objects:
