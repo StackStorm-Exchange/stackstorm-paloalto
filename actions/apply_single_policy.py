@@ -3,7 +3,7 @@ from pandevice.policies import Rulebase, PreRulebase, PostRulebase
 from lib.actions import BaseAction
 
 
-class ApplySingleObject(BaseAction):
+class ApplySinglePolicy(BaseAction):
     """
     Apply an object to a device
     """

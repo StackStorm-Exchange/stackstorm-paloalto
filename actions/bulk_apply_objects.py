@@ -1,9 +1,9 @@
 from lib.actions import BaseAction
 
 
-class BulkApplyAddressGroup(BaseAction):
+class BulkApplyObjects(BaseAction):
     """
-    Add/update address groups to a firewall in bulk
+    Add/update objects to a firewall in bulk
     """
     def run(self, class_string, device_group, firewall, objects):
 

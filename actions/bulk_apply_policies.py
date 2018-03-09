@@ -3,7 +3,7 @@ from pandevice.policies import Rulebase, PreRulebase, PostRulebase
 from lib.actions import BaseAction
 
 
-class BulkApplyAddressGroup(BaseAction):
+class BulkApplyPolicies(BaseAction):
     """
     Add/update address groups to a firewall in bulk
     """

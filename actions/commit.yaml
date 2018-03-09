@@ -1,0 +1,27 @@
+---
+name: commit
+runner_type: python-script
+description: Issue a commit ot the firewall
+enabled: true
+entry_point: commit.py
+parameters:
+  device_group:
+    type: string
+    description: If interacting with a Panorama and this is passed, the commit will be limited to this device group, otherwise a Panorama commit will commit all device groups.
+    required: false
+  firewall:
+    type: string
+    description: Predefined firewall from pack config
+    required: false
+  sync:
+    type: boolean:
+    description: If true, the action will wait for the commit to complete on the device (synchronous action), otherwise the commit will simply be requested of the action.
+    default: false
+  sync_all:
+    type: boolean
+    description: If interacting with a Panorama and this is true, the action will wait for the commit on all firewalls in device groups to complete (synchronous action), otherwise the commit will simply be requested of the action. Requires sync to use.sync
+    default: false
+  exception:
+    type: boolean
+    description: Only raise exceptions (and fail the action) if there are commit errors. Requires sync/sync_all to use.
+    default: false

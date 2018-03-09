@@ -1,0 +1,15 @@
+---
+name: bulk_unregister_ip
+runner_type: python-script
+description: Unregister IPs/tag(s) in bulk
+enabled: true
+entry_point: bulk_unregister_ip.py
+parameters:
+  objects:
+    type: array
+    description: List of objects to bulk unregister. Each object will be validated before being applied
+    required: true
+  firewall:
+    type: string
+    description: Predefined firewall from pack config
+    required: false
