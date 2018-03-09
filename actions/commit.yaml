@@ -14,7 +14,7 @@ parameters:
     description: Predefined firewall from pack config
     required: false
   sync:
-    type: boolean:
+    type: boolean
     description: If true, the action will wait for the commit to complete on the device (synchronous action), otherwise the commit will simply be requested of the action.
     default: false
   sync_all:
