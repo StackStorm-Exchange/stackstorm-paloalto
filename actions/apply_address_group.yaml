@@ -3,8 +3,12 @@ name: apply_address_group
 runner_type: python-script
 description: Add a new address group or update an existing one
 enabled: true
-entry_point: apply_address_group.py
+entry_point: apply_single_object.py
 parameters:
+  class_string:
+    type: string
+    default: AddressGroup
+    immutable: true
   name:
     type: string
     description: Name of the object

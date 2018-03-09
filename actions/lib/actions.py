@@ -1,11 +1,20 @@
 from pandevice.base import PanDevice
 from pandevice.errors import PanDeviceError
 from pandevice.panorama import Panorama, DeviceGroup
+from pandevice import objects
 
 from st2common.runners.base_action import Action
 
 
 class BaseAction(Action):
+
+    PANDEVICE_CLASSES = {
+        'AddressObject': objects.AddressObject,
+        'AddressGroup': objects.AddressGroup,
+        'ServiceObject': objects.ServiceObject,
+        'ServiceGroup': objects.ServiceGroup,
+    }
+
     def __init__(self, config):
         super(BaseAction, self).__init__(config)
         if config is None:
@@ -55,3 +64,6 @@ class BaseAction(Action):
             device
 
         return device
+
+    def get_pandevice_class(self, class_string):
+        return self.PANDEVICE_CLASSES.get(class_string)
