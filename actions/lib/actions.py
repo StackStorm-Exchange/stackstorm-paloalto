@@ -48,6 +48,7 @@ class BaseAction(Action):
             if not isinstance(device, Panorama):
                 raise Exception("Device {} is not a Panorama!".format(firewall))
 
+            device.refresh_devices(add=True)
             device = device.find(device_group, DeviceGroup)
             if device is None:
                 raise Exception("DeviceGroup {} does not exist on device {}!".format(device_group, firewall))
