@@ -1,13 +1,13 @@
 ---
-name: bulk_apply_address_objects
+name: bulk_apply_service_objects
 runner_type: python-script
-description: Add new address objects or update existing ones in bulk
+description: Add new service objects or update existing ones in bulk
 enabled: true
 entry_point: bulk_apply_objects.py
 parameters:
   class_string:
     type: string
-    default: AddressObject
+    default: ServiceObject
     immutable: true
   objects:
     type: array

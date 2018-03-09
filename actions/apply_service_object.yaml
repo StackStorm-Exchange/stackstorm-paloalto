@@ -1,34 +1,37 @@
 ---
-name: apply_address_object
+name: apply_service_object
 runner_type: python-script
-description: Add a new address object or update an existing one
+description: Add a new service object or update an existing one
 enabled: true
 entry_point: apply_single_object.py
 parameters:
   class_string:
     type: string
-    default: AddressObject
+    default: ServiceObject
     immutable: true
   name:
     type: string
     description: Name of the object
     required: true
-  value:
+  source_port:
     type: string
-    description: Value of the object
+    description: Source port
     required: false
-  type:
+  protocol:
     type: string
-    description: String value of dynamic match criteria
-    default: ip-netmask
+    description: String value of protocol
+    default: tcp
     enum:
-      - ip-netmask
-      - ip-range
-      - fqdn
+      - tcp
+      - udp
   description:
     type: string
     description: Object description
     required: false
+  destination_port:
+    type: string
+    description: Destination port
+    required: true
   tag:
     type: array
     description: List of static administrative tags to assign to the object

@@ -2,6 +2,7 @@ from pandevice.base import PanDevice
 from pandevice.errors import PanDeviceError
 from pandevice.panorama import Panorama, DeviceGroup
 from pandevice import objects
+from pandevice.policies import SecurityRule
 
 from st2common.runners.base_action import Action
 
@@ -9,10 +10,33 @@ from st2common.runners.base_action import Action
 class BaseAction(Action):
 
     PANDEVICE_CLASSES = {
-        'AddressObject': objects.AddressObject,
-        'AddressGroup': objects.AddressGroup,
-        'ServiceObject': objects.ServiceObject,
-        'ServiceGroup': objects.ServiceGroup,
+        'AddressObject': {
+            'cls': objects.AddressObject,
+            'valid_keys': ['name', 'description', 'value', 'type', 'tag'],
+        },
+        'AddressGroup': {
+            'cls': objects.AddressGroup,
+            'valid_keys': ['name', 'description', 'static_value', 'dynamic_value', 'tag'],
+        },
+        'ServiceObject': {
+            'cls': objects.ServiceObject,
+            'valid_keys': ['name', 'protocol', 'source_port', 'destination_port', 'description', 'tag'],
+        },
+        'ServiceGroup': {
+            'cls': objects.ServiceGroup,
+            'valid_keys': ['name', 'value', 'tag'],
+        },
+        'SecurityRule': {
+            'cls': SecurityRule,
+            'valid_keys': [
+                'name', 'description', 'nat_type', 'fromzone', 'tozone', 'source', 'destination', 'application',
+                'service', 'category', 'action', 'log_setting', 'log_start', 'log_end', 'description', 'type',
+                'tag', 'negate_source', 'negate_destination', 'disabled', 'schedule', 'icmp_unreachable',
+                'disable_server_response_inspection', 'group', 'virus', 'spyware', 'vulnerability',
+                'url_filtering', 'file_blocking', 'wildfire_analysis', 'data_filtering', 'negate_target',
+                'target',
+            ],
+        },
     }
 
     def __init__(self, config):

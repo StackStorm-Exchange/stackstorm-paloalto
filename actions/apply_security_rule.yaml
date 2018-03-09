@@ -1,0 +1,133 @@
+---
+name: apply_security_rule
+runner_type: python-script
+description: Add a new security rule object or update an existing one
+enabled: true
+entry_point: apply_single_policy.py
+parameters:
+  class_string:
+    type: string
+    default: SecurityRule
+    immutable: true
+  name:
+    type: string
+    description: Name of the object
+    required: true
+  description:
+    type: string
+    description: Object description
+    required: false
+  tag:
+    type: array
+    description: List of static administrative tags to assign to the object
+    required: false
+  device_group:
+    type: string
+    description: If interacting with a Panorama, the device group to add the object to. Will default to Shared if using Panorama
+    required: false
+  firewall:
+    type: string
+    description: Predefined firewall from pack config
+    required: false
+  pre_rulebase:
+    type: boolean
+    description: When using Panorama, denotes whether the policy should be added the Pre or Post Rulebase. Defaults to Pre Rulebase.
+    default: True
+  fromzone:
+    type: array
+    description: From zones
+  tozone:
+    type: array
+    description: To zones
+  source:
+    type: array
+    description: Source addresses
+  destination:
+    type: array
+    description: Destination addresses
+  application:
+    type: array
+    description: Applications
+  service:
+    type: array
+    description: Destination services (ports)
+    default:
+      - application-default
+  category:
+    type: array
+    description: Destination URL Categories
+  action:
+    type: string
+    description: Action to take (Not all options are available on all PAN-OS versions.)
+    enum:
+      - deny
+      - allow
+      - drop
+      - reset-client
+      - reset-server
+      - reset-both Note
+  log_setting:
+    type: string
+    description: Log forwarding profile
+  log_start:
+    type: boolean
+    description: Log at session start
+  log_end:
+    type: boolean
+    description: Log at session end
+  type:
+    type: string
+    description: 
+    enum: 
+      - universal
+      - intrazone
+      - intrazone
+    default: universal
+  negate_source:
+    type: boolean
+    description: Match on the reverse of the 'source' attribute
+  negate_destination:
+    type: boolean
+    description: Match on the reverse of the 'destination' attribute
+  disabled:
+    type: boolean
+    description: Disable this rule
+  schedule:
+    type: string
+    description: Schedule Profile
+  icmp_unreachable:
+    type: boolean
+    description: Send ICMP Unreachable
+  disable_server_response_inspection:
+    type: boolean
+    description: Disable server response inspection
+  group:
+    type: string
+    description: Security Profile Group
+  virus:
+    type: string
+    description: Antivirus Security Profile
+  spyware:
+    type: string
+    description: Anti-Spyware Security Profile
+  vulnerability:
+    type: string
+    description: Vulnerability Protection Security Profile
+  url_filtering:
+    type: string
+    description: URL Filtering Security Profile
+  file_blocking:
+    type: string
+    description: File Blocking Security Profile
+  wildfire_analysis:
+    type: string
+    description: Wildfire Analysis Security Profile
+  data_filtering:
+    type: string
+    description: Data Filtering Security Profile
+  negate_target:
+    type: boolean
+    description: Target all but the listed target firewalls (applies to panorama/device groups only)
+  target:
+    type: array
+    description: Apply this policy to the listed firewalls only (applies to panorama/device groups only)

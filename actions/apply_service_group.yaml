@@ -1,33 +1,21 @@
 ---
-name: apply_address_object
+name: apply_service_group
 runner_type: python-script
-description: Add a new address object or update an existing one
+description: Add a new service group or update an existing one
 enabled: true
 entry_point: apply_single_object.py
 parameters:
   class_string:
     type: string
-    default: AddressObject
+    default: ServiceGroup
     immutable: true
   name:
     type: string
     description: Name of the object
     required: true
   value:
-    type: string
-    description: Value of the object
-    required: false
-  type:
-    type: string
-    description: String value of dynamic match criteria
-    default: ip-netmask
-    enum:
-      - ip-netmask
-      - ip-range
-      - fqdn
-  description:
-    type: string
-    description: Object description
+    type: array
+    description: List of service/group object names
     required: false
   tag:
     type: array
