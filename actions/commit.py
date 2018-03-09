@@ -15,6 +15,7 @@ class Commit(BaseAction):
 
         if isinstance(device, Panorama):
             try:
+                device.commit_all(sync=sync, exception=exception)
                 device.commit_all(sync=sync, sync_all=sync_all, devicegroup=device_group, exception=exception)
             except Exception as e:
                 return False, "Commit on {} rasied exception: {}".format(firewall, e)
