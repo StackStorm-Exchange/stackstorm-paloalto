@@ -14,5 +14,5 @@ class ApplyAddressGroup(BaseAction):
         device.add(obj)
         obj.apply()
 
-        device_value = firewall if device_group is None else "{}::{}".format(firewall, device_group)
+        device_value = device_group or firewall
         return True, "AddressGroup {} successfully applied to {}".format(obj.name, device_value)
