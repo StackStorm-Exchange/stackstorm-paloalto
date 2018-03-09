@@ -77,7 +77,7 @@ parameters:
     description: Log at session end
   type:
     type: string
-    description: 
+    description: Rule type
     enum: 
       - universal
       - intrazone
