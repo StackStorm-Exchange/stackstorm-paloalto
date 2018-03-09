@@ -10,7 +10,8 @@ class ApplySingleObject(BaseAction):
     def run(self, class_string, device_group, firewall, pre_rulebase, **kwargs):
 
         device = self.get_panorama(firewall, device_group)
-        cls = self.get_pandevice_class(class_string)
+        pandevice_class = self.get_pandevice_class(class_string)
+        cls = pandevice_class['cls']
         obj = cls(**kwargs)
 
         # we need some special logic for policies
