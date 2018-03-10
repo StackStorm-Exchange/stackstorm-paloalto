@@ -11,12 +11,17 @@ class Commit(BaseAction):
 
         device = self.get_pandevice(firewall)
         if device_group and not isinstance(device, Panorama):
-            raise ValueError('{} is not a Panorama and does not understand device_group!'.format(firewall))
+            raise ValueError(
+                '{} is not a Panorama and does not understand device_group!'.format(firewall)
+            )
 
         if isinstance(device, Panorama):
             try:
                 device.commit(sync=sync, exception=exception)
-                device.commit_all(sync=sync, sync_all=sync_all, devicegroup=device_group, exception=exception)
+                device.commit_all(sync=sync,
+                                  sync_all=sync_all,
+                                  devicegroup=device_group,
+                                  exception=exception)
             except Exception as e:
                 return False, "Commit on {} rasied exception: {}".format(firewall, e)
         else:

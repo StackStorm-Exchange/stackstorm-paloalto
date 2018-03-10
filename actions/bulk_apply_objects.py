@@ -16,7 +16,9 @@ class BulkApplyObjects(BaseAction):
             if not isinstance(obj, dict):
                 raise ValueError("{} is not a valid {} object!".format(obj, cls.__name__))
             if not set(obj.keys()).issubset(set(pandevice_class['valid_keys'])):
-                raise ValueError("{} contains invalid values for an {} object!".format(obj, cls.__name__))
+                raise ValueError(
+                    "{} contains invalid values for an {} object!".format(obj, cls.__name__)
+                )
 
             pandevice_object = cls(**obj)
             device.add(pandevice_object)

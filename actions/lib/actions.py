@@ -12,29 +12,37 @@ class BaseAction(Action):
     PANDEVICE_CLASSES = {
         'AddressObject': {
             'cls': objects.AddressObject,
-            'valid_keys': ['name', 'description', 'value', 'type', 'tag'],
+            'valid_keys': [
+                'name', 'description', 'value', 'type', 'tag'
+            ],
         },
         'AddressGroup': {
             'cls': objects.AddressGroup,
-            'valid_keys': ['name', 'description', 'static_value', 'dynamic_value', 'tag'],
+            'valid_keys': [
+                'name', 'description', 'static_value', 'dynamic_value', 'tag'
+            ],
         },
         'ServiceObject': {
             'cls': objects.ServiceObject,
-            'valid_keys': ['name', 'protocol', 'source_port', 'destination_port', 'description', 'tag'],
+            'valid_keys': [
+                'name', 'protocol', 'source_port', 'destination_port', 'description', 'tag'
+            ],
         },
         'ServiceGroup': {
             'cls': objects.ServiceGroup,
-            'valid_keys': ['name', 'value', 'tag'],
+            'valid_keys': [
+                'name', 'value', 'tag'
+            ],
         },
         'SecurityRule': {
             'cls': SecurityRule,
             'valid_keys': [
-                'name', 'description', 'nat_type', 'fromzone', 'tozone', 'source', 'destination', 'application',
-                'service', 'category', 'action', 'log_setting', 'log_start', 'log_end', 'description', 'type',
-                'tag', 'negate_source', 'negate_destination', 'disabled', 'schedule', 'icmp_unreachable',
-                'disable_server_response_inspection', 'group', 'virus', 'spyware', 'vulnerability',
-                'url_filtering', 'file_blocking', 'wildfire_analysis', 'data_filtering', 'negate_target',
-                'target',
+                'name', 'description', 'nat_type', 'fromzone', 'tozone', 'source', 'destination',
+                'application', 'service', 'category', 'action', 'log_setting', 'log_start',
+                'log_end', 'description', 'type', 'tag', 'negate_source', 'negate_destination',
+                'disabled', 'schedule', 'icmp_unreachable', 'disable_server_response_inspection',
+                'group', 'virus', 'spyware', 'vulnerability', 'url_filtering', 'file_blocking',
+                'wildfire_analysis', 'data_filtering', 'negate_target', 'target',
             ],
         },
     }
@@ -68,13 +76,17 @@ class BaseAction(Action):
                 port=firewall_config.get('port'),
             )
         except PanDeviceError as e:
-            raise Exception("Failed to connect to firewall {} with pandevice error {}".format(firewall_config, e))
+            raise Exception(
+                "Failed to connect to firewall {} with pandevice error {}".format(firewall_config,
+                                                                                  e)
+            )
 
         return device
 
     def get_panorama(self, firewall, device_group):
         """
-        If the device is a Panorama and device_group is passed, return the device group else just return the device.
+        If the device is a Panorama and device_group is passed, return the device group else
+        just return the device.
         """
         device = self.get_pandevice(firewall)
         if device_group:
@@ -84,7 +96,9 @@ class BaseAction(Action):
             device.refresh_devices(add=True)
             device = device.find(device_group, DeviceGroup)
             if device is None:
-                raise Exception("DeviceGroup {} does not exist on device {}!".format(device_group, firewall))
+                raise Exception(
+                    "DeviceGroup {} does not exist on device {}!".format(device_group, firewall)
+                )
             device
 
         return device
