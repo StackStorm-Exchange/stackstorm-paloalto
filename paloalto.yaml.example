@@ -1,3 +1,10 @@
 ---
-  api_key: "palo_alto_api_key"
-  tag: "tag name"
+firewall:
+  default:
+    host: prodfirewall.corp.lan
+    api_key: XXYYZZ
+  datacenter:
+    host: datacenter.corp.lan
+    api_username: admin
+    api_password: admin
+    port: 8443

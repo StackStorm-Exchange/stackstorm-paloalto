@@ -1,0 +1,46 @@
+---
+name: apply_service_object
+runner_type: python-script
+description: Add a new service object or update an existing one
+enabled: true
+entry_point: apply_single_object.py
+parameters:
+  class_string:
+    type: string
+    default: ServiceObject
+    immutable: true
+  name:
+    type: string
+    description: Name of the object
+    required: true
+  source_port:
+    type: string
+    description: Source port
+    required: false
+  protocol:
+    type: string
+    description: String value of protocol
+    default: tcp
+    enum:
+      - tcp
+      - udp
+  description:
+    type: string
+    description: Object description
+    required: false
+  destination_port:
+    type: string
+    description: Destination port
+    required: true
+  tag:
+    type: array
+    description: List of static administrative tags to assign to the object
+    required: false
+  device_group:
+    type: string
+    description: If interacting with a Panorama, the device group to add the object to. Will default to Shared if using Panorama
+    required: false
+  firewall:
+    type: string
+    description: Predefined firewall from pack config
+    required: false

@@ -1,0 +1,23 @@
+---
+name: bulk_apply_address_groups
+runner_type: python-script
+description: Add new address groups or update existing ones in bulk
+enabled: true
+entry_point: bulk_apply_objects.py
+parameters:
+  class_string:
+    type: string
+    default: AddressGroup
+    immutable: true
+  objects:
+    type: array
+    description: List of objects to bulk apply. Each object will be validated before being applied
+    required: true
+  device_group:
+    type: string
+    description: If interacting with a Panorama, the device group to add the objects to. Will default to Shared if using Panorama
+    required: false
+  firewall:
+    type: string
+    description: Predefined firewall from pack config
+    required: false

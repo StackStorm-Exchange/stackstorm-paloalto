@@ -1,0 +1,27 @@
+---
+name: bulk_apply_security_rules
+runner_type: python-script
+description: Add new security rule objects or update existing ones in bulk
+enabled: true
+entry_point: bulk_apply_policies.py
+parameters:
+  class_string:
+    type: string
+    default: SecurityRule
+    immutable: true
+  objects:
+    type: array
+    description: List of objects to bulk apply. Each object will be validated before being applied
+    required: true
+  device_group:
+    type: string
+    description: If interacting with a Panorama, the device group to add the objects to. Will default to Shared if using Panorama
+    required: false
+  firewall:
+    type: string
+    description: Predefined firewall from pack config
+    required: false
+  pre_rulebase:
+    type: boolean
+    description: When using Panorama, denotes whether the policy should be added the Pre or Post Rulebase. Defaults to Pre Rulebase.
+    default: True

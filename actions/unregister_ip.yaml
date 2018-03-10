@@ -1,0 +1,23 @@
+---
+name: unregister_ip
+runner_type: python-script
+description: Unregister an IP/tag(s) or update an existing registration
+enabled: true
+entry_point: unregister_ip.py
+parameters:
+  ip:
+    type: string
+    description: IP Address to unregister
+    required: true
+  tag:
+    type: string
+    description: Single tag to unregister from the IP address
+    required: false
+  tag_list:
+    type: array
+    description: List of tags to unregister from IP address
+    required: false
+  firewall:
+    type: string
+    description: Predefined firewall from pack config
+    required: false
