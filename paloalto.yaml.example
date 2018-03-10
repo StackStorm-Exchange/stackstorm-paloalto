@@ -1,6 +1,10 @@
 ---
 firewall:
+  default:
+    host: prodfirewall.corp.lan
+    api_key: XXYYZZ
   datacenter:
-    hostname: prodfirewall.corp.lan
-    username: admin
-    password: admin
+    host: datacenter.corp.lan
+    api_username: admin
+    api_password: admin
+    port: 8443

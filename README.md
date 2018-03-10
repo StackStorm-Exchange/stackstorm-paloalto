@@ -21,7 +21,7 @@ firewall:
     api_password: admin
 ```
 
-You can configure serveral devices (both Firewalls and Panoramas) all under the `firewall` config section. The `default` device will be used whenver the `firewall` parameter is not passed in various actions. You may also use an api key instead of username/password for device authentication using the `api_key` parameter in the config of each device.
+You can configure serveral devices (both Firewalls and Panoramas) all under the `firewall` config section. The `default` device will be used whenever the `firewall` parameter is not passed in various actions. You may also use an api key instead of username/password for device authentication using the `api_key` parameter in the config of each device.
 
 In order to obtain *Palo Alto API key*, run the command below. Replace `firewall` with the IP address of firewall, and provide the appropriate username and password:
 
@@ -39,15 +39,20 @@ Add or update an each of these object types on a Firewall/Panorama (or device gr
 - service object - `apply_service_object`
 - service group - `apply_service_group`
 - security rule - `apply_security_rule`
+
 The above objects may also be added and updated in bulk:
 - `bulk_apply_address_object`
 - `bulk_apply_address_group`
 - `bulk_apply_service_object`
 - `bulk_apply_service_group`
 - `bulk_apply_security_rule`
-You may register and unregister IP Address/tags
+
+#### IP/Tag registration
+You can dynamically register IP Addresses/tags to the device using the User-ID API.
 - `register_ip` and `bulk_register_ip`
 - `unregister_ip` and `bulk_unregister_ip`
+
+#### Commits
 Issue commits to Firewalls and Panorama (including device groups)
 - `commit`
 
@@ -57,11 +62,11 @@ The pack also includes an example rule which can be used to receive webhooks fro
 
 The rule name is `block_bad_actors` located in the `rules/` directory. The rule receives webhooks from the firewall and registers the IP in the payload with a defined tag to the firewall for inclusion in a Dynamic Address Group to block traffic from the IP.
 
-Configure http webhook on PAN following  [PAN-OS 8.0 documentation](https://www.paloaltonetworks.com/documentation/80/pan-os/web-interface-help/device/device-server-profiles-http)
+Configure a http webhook (http server profile) on the firewall/Panorama following the [PAN-OS 8.0 documentation](https://www.paloaltonetworks.com/documentation/80/pan-os/web-interface-help/device/device-server-profiles-http)
 
-![Snapshot of PAN webhook configuration - payload format](https://github.com/IrekRomaniuk/paloalto_blockthreats/blob/master/pan-webhook.PNG)
+![Snapshot of device webhook configuration - payload format](https://github.com/IrekRomaniuk/paloalto_blockthreats/blob/master/pan-webhook.PNG)
 
-Name of _st2 server_ has to match st2 certificate imported to PAN. To get *st2 API key*, run the command below
+Name of the StackStorm server has to match the certificate imported into the firewall/Panorama for connection. The firewall/Panorama will also need a StackStorm API key. To generate a new key run this command:
  ```
 st2 apikey create -k -m '{"used_by": "PAN"}'
  ```
