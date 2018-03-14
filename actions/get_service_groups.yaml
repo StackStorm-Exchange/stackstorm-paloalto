@@ -1,0 +1,27 @@
+---
+name: get_service_groups
+runner_type: python-script
+description: Get Service Group(s) from the device
+enabled: true
+entry_point: get_object.py
+parameters:
+  class_string:
+    type: string
+    default: ServiceGroup
+    immutable: true
+  name:
+    type: string
+    description: Name of the object. When not passed, all objects of this type will be returned.
+    required: false
+  serialize:
+    type: boolean
+    description: When true, the return object(s) will be json serialized. When false, the action will return the raw pandevice python object(s).
+    default: true
+  device_group:
+    type: string
+    description: If interacting with a Panorama, the device group to add the object to. Will default to Shared if using Panorama
+    required: false
+  firewall:
+    type: string
+    description: Predefined firewall from pack config
+    required: false
