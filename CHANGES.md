@@ -1,5 +1,9 @@
 # Change Log
-## 0.2.o
+## 0.2.1
+- Fixed a bug in actions to apply a single object.
+- Added actions to get objects from the firewall.
+
+## 0.2.0
 Overhauled pack with breaking changes.
 
 Under the hood, the pack now uses [pandevice](https://github.com/PaloAltoNetworks/pandevice). Also added a number of new actions:
