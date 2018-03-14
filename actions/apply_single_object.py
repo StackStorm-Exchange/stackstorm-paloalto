@@ -8,7 +8,7 @@ class ApplySingleObject(BaseAction):
     def run(self, class_string, device_group, firewall, **kwargs):
 
         device = self.get_panorama(firewall, device_group)
-        cls = self.get_pandevice_class(class_string)
+        cls = self.get_pandevice_class(class_string)['cls']
         obj = cls(**kwargs)
         device.add(obj)
         obj.apply()
