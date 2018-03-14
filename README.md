@@ -47,6 +47,13 @@ The above objects may also be added and updated in bulk:
 - `bulk_apply_service_group`
 - `bulk_apply_security_rule`
 
+You may also retrieve these objects in a json serialized string (or as a raw python pandevice object)
+- `get_address_obejcts`
+- `get_address_groups`
+- `get_service_objects`
+- `get_service_groups`
+- `get_security_rules`
+
 #### IP/Tag registration
 You can dynamically register IP Addresses/tags to the device using the User-ID API.
 - `register_ip` and `bulk_register_ip`
