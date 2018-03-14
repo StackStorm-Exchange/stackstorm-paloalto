@@ -5,7 +5,8 @@ from lib.actions import BaseAction
 
 class GetObject(BaseAction):
     """
-    Get object(s) from a device. If serialize is true, convert the object(s) to dicts and then to json
+    Get object(s) from a device. If serialize is true, convert the object(s) to
+    dicts and then to json
     """
     def run(self, class_string, name, serialize, device_group, firewall, **kwargs):
 
