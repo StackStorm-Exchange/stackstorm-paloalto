@@ -21,7 +21,7 @@ class BulkApplyObjects(BaseAction):
                 )
 
             # manually update an existing object or add a new one
-            pandevice_object = d.find(obj['name'], class_type=cls)
+            pandevice_object = device.find(obj['name'], class_type=cls)
             if pandevice_object is not None:
                 for key, value in obj.items():
                     setattr(pandevice_object, key, value)
