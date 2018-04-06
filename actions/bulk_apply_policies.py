@@ -32,8 +32,15 @@ class BulkApplyPolicies(BaseAction):
                     "{} contains invalid values for a {} object!".format(obj, cls.__name__)
                 )
 
-            pandevice_object = cls(**obj)
-            rulebase.add(pandevice_object)
+            # manually update an existing object or add a new one
+            pandevice_object = rulebase.find(obj['name'], class_type=cls)
+            if pandevice_object is not None:
+                for key, value in obj.items():
+                    setattr(pandevice_object, key, value)
+
+            else:
+                pandevice_object = cls(**obj)
+                rulebase.add(pandevice_object)
 
         pandevice_object.apply_similar()
 

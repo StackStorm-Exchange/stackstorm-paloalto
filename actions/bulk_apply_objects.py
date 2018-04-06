@@ -20,8 +20,15 @@ class BulkApplyObjects(BaseAction):
                     "{} contains invalid values for an {} object!".format(obj, cls.__name__)
                 )
 
-            pandevice_object = cls(**obj)
-            device.add(pandevice_object)
+            # manually update an existing object or add a new one
+            pandevice_object = d.find(obj['name'], class_type=cls)
+            if pandevice_object is not None:
+                for key, value in obj.items():
+                    setattr(pandevice_object, key, value)
+
+            else:
+                pandevice_object = cls(**obj)
+                device.add(pandevice_object)
 
         pandevice_object.apply_similar()
 
