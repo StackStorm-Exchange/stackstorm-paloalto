@@ -5,7 +5,7 @@ from lib.actions import BaseAction
 
 class BulkApplyPolicies(BaseAction):
     """
-    Add/update address groups to a firewall in bulk
+    Add/update policies to a firewall in bulk
     """
     def run(self, class_string, device_group, firewall, objects, pre_rulebase):
 
