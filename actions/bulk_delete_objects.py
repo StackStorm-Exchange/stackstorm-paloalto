@@ -14,10 +14,7 @@ class BulkDeleteObjects(BaseAction):
         # because we are bulk deleting, we do not refresh the object tree
 
         for obj in objects:
-            if not isinstance(obj, str):
-                raise ValueError("{} is not a valid {} name!".format(obj, cls.__name__))
-
-            pandevice_object = cls(name=obj)
+            pandevice_object = cls(name=str(obj))
             device.add(pandevice_object)
 
         pandevice_object.delete_similar()

@@ -1,4 +1,8 @@
 # Change Log
+## 0.3.1
+- Broke out commit-all into its own action (`commit_all`) for Panorama devices
+- Fixed the `str()` test in the bulk delete action
+
 ## 0.3.0
 - Fixed bulk apply actions so that they work when updating existing objects
 - Added delete/bulk delete actions. These actions take an object name(s) as input to delete.
