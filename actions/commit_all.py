@@ -3,16 +3,24 @@ from pandevice.panorama import Panorama
 from lib.actions import BaseAction
 
 
-class Commit(BaseAction):
+class CommitAll(BaseAction):
     """
-    Commit a firewall
+    Commit All on a Panorama
     """
-    def run(self, firewall, sync, exception):
+    def run(self, firewall, device_group, sync, sync_all, exception):
 
         device = self.get_pandevice(firewall)
 
+        if sync_all and not sync:
+            return False, "You must use 'sync' in order to use 'sync_all'."
+
         try:
-            device.commit(sync=sync, exception=exception)
+            device.commit_all(
+                sync=sync,
+                sync_all=sync_all,
+                devicegroup=device_group,
+                exception=exception
+            )
         except Exception as e:
             return False, "Commit on {} rasied exception: {}".format(firewall, e)
 
