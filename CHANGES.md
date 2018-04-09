@@ -1,4 +1,8 @@
 # Change Log
+## 0.3.0
+- Fixed bulk apply actions so that they work when updating existing objects
+- Added delete/bulk delete actions. These actions take an object name(s) as input to delete.
+
 ## 0.2.1
 - Fixed a bug in actions to apply a single object.
 - Added actions to get objects from the firewall.

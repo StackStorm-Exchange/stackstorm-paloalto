@@ -1,0 +1,27 @@
+---
+name: bulk_delete_security_rules
+runner_type: python-script
+description: Delete security rule objects in bulk
+enabled: true
+entry_point: bulk_delete_policies.py
+parameters:
+  class_string:
+    type: string
+    default: SecurityRule
+    immutable: true
+  objects:
+    type: array
+    description: List of object names to bulk apply.
+    required: true
+  device_group:
+    type: string
+    description: If interacting with a Panorama, the device group to delete the objects from. Will default to Shared if using Panorama
+    required: false
+  firewall:
+    type: string
+    description: Predefined firewall from pack config
+    required: false
+  pre_rulebase:
+    type: boolean
+    description: When using Panorama, denotes whether the policy should be added the Pre or Post Rulebase. Defaults to Pre Rulebase.
+    default: True

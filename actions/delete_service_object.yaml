@@ -1,0 +1,23 @@
+---
+name: delete_service_object
+runner_type: python-script
+description: Delete a service object
+enabled: true
+entry_point: delete_single_object.py
+parameters:
+  class_string:
+    type: string
+    default: ServiceObject
+    immutable: true
+  name:
+    type: string
+    description: Name of the object
+    required: true
+  device_group:
+    type: string
+    description: If interacting with a Panorama, the device group to delete the object from. Will default to Shared if using Panorama
+    required: false
+  firewall:
+    type: string
+    description: Predefined firewall from pack config
+    required: false

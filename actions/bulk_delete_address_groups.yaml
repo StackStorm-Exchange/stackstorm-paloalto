@@ -1,0 +1,23 @@
+---
+name: bulk_delete_address_groups
+runner_type: python-script
+description: Delete address groups in bulk
+enabled: true
+entry_point: bulk_delete_objects.py
+parameters:
+  class_string:
+    type: string
+    default: AddressGroup
+    immutable: true
+  objects:
+    type: array
+    description: List of objects names to bulk delete.
+    required: true
+  device_group:
+    type: string
+    description: If interacting with a Panorama, the device group to delete the objects from. Will default to Shared if using Panorama
+    required: false
+  firewall:
+    type: string
+    description: Predefined firewall from pack config
+    required: false

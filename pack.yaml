@@ -5,6 +5,6 @@ description: Interact with Palo Alto firewalls
 keywords:
     - firewalls
     - threats
-version: 0.2.1
+version: 0.3.0
 author: Irek Romaniuk, John Anderson
 email: irek.romaniuk@gmail.com

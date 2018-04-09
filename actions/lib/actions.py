@@ -99,7 +99,6 @@ class BaseAction(Action):
                 raise Exception(
                     "DeviceGroup {} does not exist on device {}!".format(device_group, firewall)
                 )
-            device
 
         return device
 

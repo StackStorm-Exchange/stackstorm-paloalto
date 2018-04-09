@@ -32,5 +32,5 @@ class Commit(BaseAction):
 
         if not sync:
             return True, "Commit on {} successfully requested!".format(firewall)
-        else:
-            return True, "Commit on {} successfully completed!".format(firewall)
+
+        return True, "Commit on {} successfully completed!".format(firewall)
