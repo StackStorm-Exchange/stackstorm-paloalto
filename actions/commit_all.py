@@ -11,6 +11,9 @@ class CommitAll(BaseAction):
 
         device = self.get_pandevice(firewall)
 
+        if not isinstance(device, Panorama):
+            return False, "Device is not a Panorama!"
+
         if sync_all and not sync:
             return False, "You must use 'sync' in order to use 'sync_all'."
 
