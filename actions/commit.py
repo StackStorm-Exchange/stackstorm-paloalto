@@ -1,5 +1,3 @@
-from pandevice.panorama import Panorama
-
 from lib.actions import BaseAction
 
 
