@@ -1,4 +1,8 @@
 # Change Log
+
+## 0.3.2
+- Version bump to fix tagging issues
+
 ## 0.3.1
 - Broke out commit-all into its own action (`commit_all`) for Panorama devices
 - Fixed the `str()` test in the bulk delete action
