@@ -3,8 +3,8 @@ ref: paloalto
 name: paloalto
 description: Interact with Palo Alto firewalls
 keywords:
-    - firewalls
-    - threats
+  - firewalls
+  - threats
 version: 0.3.2
 author: Irek Romaniuk, John Anderson
 email: irek.romaniuk@gmail.com
