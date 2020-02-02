@@ -1,6 +1,6 @@
 from pandevice.policies import Rulebase, PreRulebase, PostRulebase
 
-from lib.actions import BaseAction
+from .lib.actions import BaseAction
 
 
 class BulkDeletePolicies(BaseAction):
