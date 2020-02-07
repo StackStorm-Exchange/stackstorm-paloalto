@@ -1,6 +1,6 @@
 from pandevice.panorama import Panorama
 
-from .lib.actions import BaseAction
+from lib.actions import BaseAction
 
 
 class CommitAll(BaseAction):

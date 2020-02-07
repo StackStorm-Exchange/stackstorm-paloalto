@@ -1,4 +1,4 @@
-from .lib.actions import BaseAction
+from lib.actions import BaseAction
 
 
 class BulkRegisterIP(BaseAction):
