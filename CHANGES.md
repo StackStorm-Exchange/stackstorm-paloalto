@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.4.0
+
+- Overhaul of pack
+- Add a lot more things here :)
+
 ## 0.3.3
 
 - Python 3 fixups

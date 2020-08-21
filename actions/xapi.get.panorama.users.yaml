@@ -1,0 +1,66 @@
+---
+# https://github.com/kevinsteves/pan-python/blob/master/doc/pan.xapi.rst
+description: Get a list of Panorama users
+enabled: true
+entry_point: panxapi_action.py
+runner_type: python-script
+name: xapi.get.panorama.users
+parameters:
+  api_method:
+    description: PanXapi has multiple methods (op, show, get, set, etc). Specify which method this action should be used with.
+    type: string
+    immutable: true
+    required: true
+    default: get
+# XAPI Action specific Parameters
+  xml_result:
+    description: Return the data as an XML Document when applicable
+    type: boolean
+    default: false
+# Connection Params
+  connection_name:
+    description: The name of the connection in the pack config that should be used. Specifying fields such as 'api_username' or 'serial' will override that value in 'config.connections.connection_name' if configured.
+    type: string
+  hostname:
+    description: The hostname of the Firewall or Panorama
+    type: string
+  api_username:
+    description: The API Username for the Firewall or Panorama
+    type: string
+  api_password:
+    description: The API Password for the Firewall or Panorama
+    type: string
+    secret: true
+  api_key:
+    description: The API Key for the Firewall or Panorama
+    type: string
+    secret: true
+  port:
+    description: Port number to use for connection (if different non-default port)
+    type: integer
+  serial:
+    description: When an API request is made on Panorama and the serial number is specified, Panorama will redirect the request to the managed device with the serial number.
+    type: string
+  use_http:
+    description: Use the http URL scheme for API requests. The default is to use the https URL scheme.
+    type: boolean
+    default: false
+  use_get:
+    description: Use the HTTP GET method for API requests. The default is to use the HTTP POST method with Content-Type application/x-www-form-urlencoded.
+    type: boolean
+    default: false
+  timeout:
+    description: The maximum number of seconds to wait for a successful connection.
+    type: integer
+  ssl_context:
+    description: An ssl.SSLContext() to use for HTTPS requests. An SSL context holds data such as SSL configuration options and certificates.
+    type: string
+# Method Params
+  xpath:
+    description: The xpath string to be used
+    type: string
+    default: /config/mgt-config/users
+    immutable: true
+  extra_qs:
+    description: Extra parameters for API call. Format is either; JSON Dict of key:value, or an '&' seperated list of key=value.
+    type: string

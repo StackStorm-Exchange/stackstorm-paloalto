@@ -33,3 +33,57 @@ firewalls:
       secret: true
       required: false
   additionalProperties: false
+
+connections:
+  type: "object"
+  required: true
+  patternProperties:
+    "^\\w+":
+      "$ref": "#/properties/connection_name"
+  additionalProperties: false
+
+connection_name:
+  type: object
+  additionalProperties: false
+  properties:
+    hostname:
+      description: The hostname of the Palo Alto device, or API Endpoint
+      type: string
+    api_key:
+      description: The API Key for the Palo Alto device, or API Endpoint
+      type: string
+      secret: true
+    timeout:
+      description: The maximum number of seconds to wait for a successful connection.
+      type: integer
+    api_username:
+      description: XAPI - The API Username for the Firewall or Panorama
+      type: string
+    api_password:
+      description: XAPI - The API Password for the Firewall or Panorama
+      type: string
+      secret: true
+    port:
+      description: XAPI - Port number to use for connection (if different non-default port)
+      type: integer
+    serial:
+      description: XAPI - When an API request is made on Panorama and the serial number is specified, Panorama will redirect the request to the managed device with the serial number.
+      type: string
+    use_http:
+      description: XAPI - Use the http URL scheme for API requests. The default is to use the https URL scheme.
+      type: boolean
+    use_get:
+      description: XAPI - Use the HTTP GET method for API requests. The default is to use the HTTP POST method with Content-Type application/x-www-form-urlencoded.
+      type: boolean
+    ssl_context:
+      description: XAPI/WFAPI - Specify the SSL Context to use - https://github.com/kevinsteves/pan-python/blob/master/doc/pan.xapi.rst
+      type: string
+    http:
+      description: WFAPI - Use http URL scheme for API requests. This can be used with the testfile() method to get a malware test file over HTTP
+      type: boolean
+    api_version:
+      description: LICAPI - API version as a string in the form vversion or version (e.g., v1)
+      type: string
+    verify_cert:
+      description: LICAPI - Specify if SSL server certificate verification is performed. (Default is True)
+      type: boolean

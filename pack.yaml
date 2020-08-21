@@ -1,13 +1,24 @@
 ---
 ref: paloalto
 name: paloalto
-description: Interact with Palo Alto firewalls
+description: StackStorm Integration Pack for Palo Alto using the Pan-Python library (XApi, LicAPI, WFApi, AFApi)
 keywords:
-  - firewalls
-  - threats
-version: 0.3.3
-author: Irek Romaniuk, John Anderson
-email: irek.romaniuk@gmail.com
+  - Threats
+  - PAN
+  - PaloAlto
+  - Palo Alto
+  - Panorama
+  - Firewall
+  - Firewalls
+  - Security
+version: 0.4.0
+author: Ian Price
+email: ianmprice@gmail.com
 python_versions:
   - "2"
   - "3"
+contributors:
+  - Irek Romaniuk <irek.romaniuk@gmail.com>
+  - John Anderson
+  - Ian Price <ianmprice@gmail.com>
+  - Matt Miller

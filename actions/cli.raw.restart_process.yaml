@@ -1,0 +1,60 @@
+---
+# https://ktbyers.github.io/netmiko/docs/netmiko/paloalto/paloalto_panos.html
+description: Execute the cli command "debug software restart process <process>"
+enabled: true
+entry_point: netmiko_action.py
+runner_type: python-script
+name: cli.raw.restart_process
+parameters:
+# Connection Params
+  connection_name:
+    description: The name of the connection in the pack config that should be used. Specifying fields such as 'username' will override that value in 'config.connections.connection_name' if configured.
+    type: string
+  hostname:
+    description: The hostname of the Firewall or Panorama
+    type: string
+  username:
+    description: The API Username for the Firewall or Panorama
+    type: string
+  password:
+    description: The API Password for the Firewall or Panorama
+    type: string
+    secret: true
+# Method Params
+  command:
+    description: The CLI command to be ran. Output will be captured and returned. When running debug commands, be very sure you know what you are doing.
+    type: string
+    required: true
+    default: debug software restart process {{ _process }}
+    immutable: true
+  _process:
+    description: The CLI process to restart
+    type: string
+    required: true
+    enum:
+      - authd
+      - cord
+      - crypto
+      - device-server
+      - dhcp
+      - dnsproxy
+      - ikemgr
+      - keymgr
+      - l2ctrl
+      - l3-service
+      - log-receiver
+      - management-server
+      - ntp
+      - pan-comm
+      - pppoe
+      - rasmgr
+      - routed
+      - satd
+      - snmpd
+      - sslmgr
+      - sslvpn-web-server
+      - user-id
+      - vardata-receiver
+      - web-backend
+      - web-server
+    default: ntp
