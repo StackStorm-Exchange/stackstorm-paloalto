@@ -61,6 +61,7 @@ parameters:
     type: string
     required: true
     default: /config/shared/address/entry[@name='{{ _address }}']
+    immutable: true
   _address:
     description: The address to be deleted
     type: string

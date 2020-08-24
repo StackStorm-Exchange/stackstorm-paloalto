@@ -2,8 +2,52 @@
 
 ## 0.4.0
 
-- Overhaul of pack
-- Add a lot more things here :)
+- Complete Pack rework (Old actions still present for now, old/new logic is in parallel)
+- The following Actions are now deprecated and will be removed in a future release. If you use these please begin migrating your usage to new actions.
+  - apply_address_group
+  - apply_address_object
+  - apply_security_rule
+  - apply_service_group
+  - apply_service_object
+  - bulk_apply_address_groups
+  - bulk_apply_address_objects
+  - bulk_apply_security_rules
+  - bulk_apply_service_groups
+  - bulk_apply_service_objects
+  - bulk_delete_address_groups
+  - bulk_delete_address_objects
+  - bulk_delete_security_rules
+  - bulk_delete_service_groups
+  - bulk_delete_service_objects
+  - bulk_register_ip
+  - bulk_unregister_ip
+  - commit
+  - commit_all
+  - delete_address_group
+  - delete_address_object
+  - delete_security_rule
+  - delete_service_group
+  - delete_service_object
+  - get_address_groups
+  - get_address_objects
+  - get_security_rules
+  - get_service_groups
+  - get_service_objects
+  - register_ip
+  - unregister_ip
+- New Actions
+  - XApi - Used for actions interacting with the Palo Alto XAPI
+    - https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-panorama-api/get-started-with-the-pan-os-xml-api
+  - LicApi - Used for interacting with the cloud based Licensing API
+    - https://docs.paloaltonetworks.com/vm-series/8-1/vm-series-deployment/license-the-vm-series-firewall/licensing-api.html
+  - WFApi - Used for interacting with the cloud based Wild Fire API
+    - https://docs.paloaltonetworks.com/wildfire/u-v/wildfire-api.html
+  - AFApi - Used for interacting with the cloud based AutoFocus API
+    - https://docs.paloaltonetworks.com/autofocus/autofocus-api.html
+- Shortcut Actions
+  - Shortcut actions are a way of leveraging an existing action (like `xapi.set`) in a way that simplifies the input process. Normally you would need fairly detailed xml/xpath data to make an new address group object. A shortcut action allows you to define the xml/xpath structure, and add parameters to the action definition that can be inserted into the xml/xpath at run time. See the readme section under 'Tricks Used' for more details.
+  - Example: [xapi.delete.panorama.address.shared](./actions/xapi.delete.panorama.address.shared.yaml)
+- Configuration - The config now supports the top level key `connections` for use with new actions.
 
 ## 0.3.3
 

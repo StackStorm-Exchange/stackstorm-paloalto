@@ -111,12 +111,14 @@ The last field (if present) is used for when there is a specific use of an `endp
 ##### Tricks Used
 
 * [base.py](./actions/lib/base.py) `_parameter_housekeeping()`
-  * Any kwarg (parameter) prefixed with `action_` will be replaced with a kwarg of the same name without the `action_` prefix after `_setup_connection()`is called.
+  * Conflicting parameter names
+    * Any kwarg (parameter) prefixed with `action_` will be replaced with a kwarg of the same name without the `action_` prefix after `_setup_connection()`is called.
     * There is potential for overlapping parameter names between a pan-python method, and the connection client (XAPI). There needs to be a way to ensure the correct parameter is passed to pan-python for connection Vs a method.
       * Example: `timeout` needed for the api connection, and `action_timeout` needed for waiting for a commit to finish.
-  * Any kwarg (parameter) prefixed with a single underscore (`_`) will be thrown away at execution.
-    * To aid in creating simplified actions from base methods (`xapi.commit` for example) there needed to be a way to mark a parameter that it can be just thrown away as soon as the action is successfully scheduled.
-      * Example: [`xapi.commit.panorama.device_group`](./actions/xapi.commit.panorama.device_group.yaml) parameter: `_device_group`
+  * Shortcut Actions
+    * Any kwarg (parameter) prefixed with a single underscore (`_`) will be thrown away at execution.
+      * To aid in creating simplified actions from base methods (`xapi.commit` for example) there needed to be a way to mark a parameter that it can be just thrown away as soon as the action is successfully scheduled.
+        * Example: [`xapi.commit.panorama.device_group`](./actions/xapi.commit.panorama.device_group.yaml) parameter: `_device_group`
 
 # References
 
@@ -143,15 +145,31 @@ The last field (if present) is used for when there is a specific use of an `endp
 
 ## Deprecation
 
-ADD LANGUAGE AROUND DEPRECATION REASONS AND ANALYSIS
+pandevice has been overhauled and deprecated, and it also had significant limitations compared to pan-python. This has nothing to do with code quality. pan-device created specific logic on a per usage basis that requires any new capbilities to also have use-specific logic created. Pan-python simply provides a way to interact with the api directly, and any use cases are just different ways of using the same methods.
 
-TIMELINE FOR RETIRING OLD LOGIC
+For example, `xapi.op` simply takes the command string provided, and passes it to the `op` method, which corresponds to the api as [`action=op`](https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-panorama-api/pan-os-xml-api-request-types/pan-os-xml-api-request-types-and-actions/request-types.html#id402b6ebc-9ea7-4d7c-8bcf-fa0444ea252a)
 
-OPENING ISSUES AROUND MIGRATION
+Using an underlying package that doesn't restrict capabilities enables more automation usecases in stackstorm.
 
-## Migration Guide
+Pan-device has recently been rebranded as pan-os-python but continues a similar philosophy.
 
-ADD DETAILS OF HOW TO MIGRATE TO NEW LOGIC AND MAINTAIN FUNCTIONALITY
+#### Timeline
+
+There is no strict timeline targetted for retiring the older logic, but since there has been a major change with pan-device, there will be minimal to no support provided for it. Please take steps to migrate your logic to new actions. Alternatively, consider contributing new actions that are easy to make for specific use-cases. See 'Shortcut Actions' in 'Tricks Used' for more details. Many uses of base actions that would be otherwise complicated, can be simplified without requiring additional python code.
+
+#### Migration issues or questions
+
+If you run into problems with migrating, or have questions on how to migrate a use case, please open an issue in this repository, and we can try to get you help needed. That may be in the form of explaining how to use a new action, or discussing how to create a shortcut action.
+
+## Migration
+
+The underlying python module used by the old pack logic (pandevice) is built ontop of the same module used by the new pack (pan-python). This makes migration fairly straight forward as many actions can be handled by `xapi.op`, `xapi.show`, `xapi.commit`, and `xapi.delete`. While the data required for these actions may be less structured from the previous versions, they aren't limited by requiring corresponding logic to handle specific cases.
+
+Examples of migrating an action
+
+#### apply_address_group -> xapi.op
+
+DETAILS HERE
 
 ## Summary
 

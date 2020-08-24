@@ -45,7 +45,7 @@ class BaseAction(Action):
         try:
             self.client = getattr(self.imported_module,
                                   module_class)(**connection)
-        except self.imported_module_class as err:
+        except Exception as err:
             self.logger.error(err)
             sys.exit(1)
 

@@ -49,6 +49,13 @@ class BaseAction(Action):
 
     def __init__(self, config):
         super(BaseAction, self).__init__(config)
+
+        # Deprecation Message
+        self.logger.warning(
+            'This action has been deprecated and will be removed in a future release. \
+            Please review this pack\'s README for migration information. \
+            If there is no migration path for your usecase, please open a github issue.')
+
         if config is None:
             raise ValueError("No connection configuration details found")
         if "firewall" in config:
