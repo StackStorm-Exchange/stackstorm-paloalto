@@ -1,7 +1,7 @@
 ---
 name: get_address_objects
 runner_type: python-script
-description: Get Address Object(s) from the device
+description: DEPRECATED - Get Address Object(s) from the device
 enabled: true
 entry_point: get_object.py
 parameters:

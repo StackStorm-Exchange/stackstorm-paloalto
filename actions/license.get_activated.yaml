@@ -1,0 +1,35 @@
+---
+# https://github.com/kevinsteves/pan-python/blob/master/doc/pan.licapi.rst
+description: Get previously activated licenses
+enabled: true
+entry_point: panlicapi_action.py
+runner_type: python-script
+name: license.get_activated
+parameters:
+  api_method:
+    description: LicApi has multiple methods (activate, deactivate, get). Specify which method this action should be used with.
+    type: string
+    required: true
+    immutable: true
+    default: activate
+  # Connection Params
+  connection_name:
+    description: The name of the connection in the pack config that should be used. Specifying fields such as 'api_username' or 'serial' will override that value in 'config.connections.connection_name' if configured.
+    type: string
+  api_key:
+    description: The API Key for the Licensing API
+    type: string
+    secret: true
+  hostname:
+    description: The hostname for the Licensing API
+    type: string
+  # Method Params
+  uuid:
+    description: VM-Series vm-uuid. Required when used with cpuid
+    type: string
+  cpuid:
+    description: VM-Series vm-cpuid. Required when used with uuid
+    type: string
+  serialnumber:
+    description: Previously activated device serial number.
+    type: string

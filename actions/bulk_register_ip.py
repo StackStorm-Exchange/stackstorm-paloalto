@@ -1,3 +1,7 @@
+"""
+    This action is deprecated and will be removed in a future release
+"""
+
 from lib.actions import BaseAction
 
 

@@ -1,7 +1,7 @@
 ---
 name: bulk_register_ip
 runner_type: python-script
-description: Register new IPs/tag(s) or update existing registrations in bulk
+description: DEPRECATED - Register new IPs/tag(s) or update existing registrations in bulk
 enabled: true
 entry_point: bulk_register_ip.py
 parameters:

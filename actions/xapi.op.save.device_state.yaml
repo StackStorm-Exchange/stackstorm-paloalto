@@ -1,0 +1,76 @@
+---
+# https://github.com/kevinsteves/pan-python/blob/master/doc/pan.xapi.rst
+description: Saves the device-state to device as device_state_cfg.tgz
+enabled: true
+entry_point: panxapi_action.py
+runner_type: python-script
+name: xapi.op.save.device_state
+parameters:
+  api_method:
+    description: PanXapi has multiple methods (op, show, get, set, etc). Specify which method this action should be used with.
+    type: string
+    immutable: true
+    required: true
+    default: op
+  # XAPI Action specific Parameters
+  xml_result:
+    description: Return the data as an XML Document when applicable
+    type: boolean
+    default: false
+  # Connection Params
+  connection_name:
+    description: The name of the connection in the pack config that should be used. Specifying fields such as 'api_username' or 'serial' will override that value in 'connection' if configured.
+    type: string
+  hostname:
+    description: The hostname of the Firewall or Panorama
+    type: string
+  api_username:
+    description: The API Username for the Firewall or Panorama
+    type: string
+  api_password:
+    description: The API Password for the Firewall or Panorama
+    type: string
+    secret: true
+  api_key:
+    description: The API Key for the Firewall or Panorama
+    type: string
+    secret: true
+  port:
+    description: Port number to use for connection (if different non-default port)
+    type: integer
+  serial:
+    description: When an API request is made on Panorama and the serial number is specified, Panorama will redirect the request to the managed device with the serial number.
+    type: string
+  use_http:
+    description: Use the http URL scheme for API requests. The default is to use the https URL scheme.
+    type: boolean
+    default: false
+  use_get:
+    description: Use the HTTP GET method for API requests. The default is to use the HTTP POST method with Content-Type application/x-www-form-urlencoded.
+    type: boolean
+    default: false
+  timeout:
+    description: The maximum number of seconds to wait for a successful connection.
+    type: integer
+  ssl_context:
+    description: An ssl.SSLContext() to use for HTTPS requests. An SSL context holds data such as SSL configuration options and certificates.
+    type: string
+  # Method Params
+  cmd_xml:
+    description: Required argument for op() method - True - cmd is not XML | False - cmd is XML
+    type: boolean
+    required: true
+    immutable: true
+    default: false
+  cmd:
+    description: The command to be run with the op() method
+    type: string
+    required: true
+    immutable: true
+    default: <save><device-state></device-state></save>
+  vsys:
+    description: VSYS ID for dynamic update/partial commit/operational command/report
+    type: string
+  extra_qs:
+    description: Extra parameters for API call
+    type: string

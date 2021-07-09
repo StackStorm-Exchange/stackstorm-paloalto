@@ -1,7 +1,7 @@
 ---
 name: delete_address_group
 runner_type: python-script
-description: Delete an address group
+description: DEPRECATED - Delete an address group
 enabled: true
 entry_point: delete_single_object.py
 parameters:

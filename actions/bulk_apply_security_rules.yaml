@@ -1,7 +1,7 @@
 ---
 name: bulk_apply_security_rules
 runner_type: python-script
-description: Add new security rule objects or update existing ones in bulk
+description: DEPRECATED - Add new security rule objects or update existing ones in bulk
 enabled: true
 entry_point: bulk_apply_policies.py
 parameters:
@@ -24,4 +24,4 @@ parameters:
   pre_rulebase:
     type: boolean
     description: When using Panorama, denotes whether the policy should be added the Pre or Post Rulebase. Defaults to Pre Rulebase.
-    default: True
+    default: true

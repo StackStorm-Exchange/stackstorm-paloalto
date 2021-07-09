@@ -1,7 +1,7 @@
 ---
 name: commit_all
 runner_type: python-script
-description: Issue a commit all on a Panorama
+description: DEPRECATED - Issue a commit all on a Panorama
 enabled: true
 entry_point: commit_all.py
 parameters:

@@ -1,0 +1,39 @@
+---
+# https://github.com/kevinsteves/pan-python/blob/master/doc/pan.wfapi.rst
+description: Gets a previously uploaded sample file.
+enabled: true
+entry_point: panwfapi_action.py
+runner_type: python-script
+name: wildfire.sample
+parameters:
+  api_method:
+    description: WFApi has multiple methods (submit, sample, verdict, etc). Specify which method this action should be used with.
+    type: string
+    required: true
+    immutable: true
+    default: sample
+  # Connection Params
+  connection_name:
+    description: The name of the connection in the pack config that should be used. Specifying fields such as 'api_username' or 'serial' will override that value in 'config.connections.connection_name' if configured.
+    type: string
+  api_key:
+    description: The API Key for the Wildfire API
+    type: string
+    secret: true
+  hostname:
+    description: The hostname for the WildFire API
+    type: string
+  timeout:
+    description: The maximum number of seconds to wait for a successful connection.
+    type: integer
+  ssl_context:
+    description: An ssl.SSLContext() to use for HTTPS requests. An SSL context holds data such as SSL configuration options and certificates.
+    type: string
+  http:
+    description: use http URL scheme (default https)
+    type: boolean
+    default: false
+  # Method Params
+  hash:
+    description: The MD5 or SHA256 hash for the sample.
+    type: string

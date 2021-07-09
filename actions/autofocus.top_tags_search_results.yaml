@@ -1,0 +1,44 @@
+---
+# https://github.com/kevinsteves/pan-python/blob/master/doc/pan.afapi.rst
+description: Calls the top_tags_search() method, and then calls the top_tags_results() method until the response body contains a complete af_message.
+enabled: true
+entry_point: panafapi_action.py
+runner_type: python-script
+name: autofocus.top_tags_search_results
+parameters:
+  api_method:
+    description: AFapi has multiple methods (tags, session, etc). Specify which method this action should be used with.
+    type: string
+    required: true
+    immutable: true
+    default: top_tags_search_results
+  # Connection Params
+  connection_name:
+    description: The name of the connection in the pack config that should be used. Specifying fields such as 'api_username' or 'serial' will override that value in 'config.connections.connection_name' if configured.
+    type: string
+  api_key:
+    description: The API Key for the AutoFocus API
+    type: string
+    secret: true
+  hostname:
+    description: The hostname for the AutoFocus API
+    type: string
+  api_version:
+    description: The api version to use (default is pan-python dependent)
+    type: string
+  timeout:
+    description: The maximum number of seconds to wait for a successful connection.
+    type: integer
+  verify_cert:
+    description: Validate SSL Certificate when connecting to API
+    type: boolean
+    default: true
+  # Method Params
+  data:
+    description: JSON object for top_tags_search() HTTP request body.
+    type: object
+    required: true
+  terminal:
+    description: Specify if only the terminal (complete) search result should be returned or if the intermediate (incomplete) search results should also be returned.
+    type: boolean
+    default: true

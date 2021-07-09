@@ -1,7 +1,7 @@
 ---
 name: apply_service_object
 runner_type: python-script
-description: Add a new service object or update an existing one
+description: DEPRECATED - Add a new service object or update an existing one
 enabled: true
 entry_point: apply_single_object.py
 parameters:

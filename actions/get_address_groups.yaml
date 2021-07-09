@@ -1,7 +1,7 @@
 ---
 name: get_address_groups
 runner_type: python-script
-description: Get Address Group(s) from the device
+description: DEPRECATED - Get Address Group(s) from the device
 enabled: true
 entry_point: get_object.py
 parameters:

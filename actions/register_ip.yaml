@@ -1,7 +1,7 @@
 ---
 name: register_ip
 runner_type: python-script
-description: Register a new IP/tag(s) or update an existing registration
+description: DEPRECATED - Register a new IP/tag(s) or update an existing registration
 enabled: true
 entry_point: register_ip.py
 parameters:
