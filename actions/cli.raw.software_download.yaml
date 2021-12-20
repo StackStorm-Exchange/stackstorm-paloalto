@@ -1,0 +1,33 @@
+---
+# https://ktbyers.github.io/netmiko/docs/netmiko/paloalto/paloalto_panos.html
+description: Execute the cli command "request system software download version". Downloads software version by name (Ex 9.0.3-h3)
+enabled: true
+entry_point: netmiko_action.py
+runner_type: python-script
+name: cli.raw.software_download
+parameters:
+  # Connection Params
+  connection_name:
+    description: The name of the connection in the pack config that should be used. Specifying fields such as 'username' will override that value in 'config.connections.connection_name' if configured.
+    type: string
+  hostname:
+    description: The hostname of the Firewall or Panorama
+    type: string
+  username:
+    description: The API Username for the Firewall or Panorama
+    type: string
+  password:
+    description: The API Password for the Firewall or Panorama
+    type: string
+    secret: true
+  # Method Params
+  command:
+    description: The CLI command to be ran. Output will be captured and returned. When running debug commands, be very sure you know what you are doing.
+    type: string
+    required: true
+    default: request system software download version {{ _version }}
+    immutable: true
+  _version:
+    description: The Palo Alto software version to be downloaded. Example "9.0.3-h3"
+    type: string
+    required: true

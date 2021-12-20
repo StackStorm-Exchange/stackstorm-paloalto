@@ -1,7 +1,7 @@
 ---
 name: commit
 runner_type: python-script
-description: Issue a commit ot the firewall
+description: DEPRECATED - Issue a commit to the firewall
 enabled: true
 entry_point: commit.py
 parameters:

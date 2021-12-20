@@ -1,7 +1,7 @@
 ---
 name: bulk_apply_service_groups
 runner_type: python-script
-description: Add new service groups or update existing ones in bulk
+description: DEPRECATED - Add new service groups or update existing ones in bulk
 enabled: true
 entry_point: bulk_apply_objects.py
 parameters:

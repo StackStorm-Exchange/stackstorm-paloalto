@@ -1,7 +1,7 @@
 ---
 name: bulk_delete_security_rules
 runner_type: python-script
-description: Delete security rule objects in bulk
+description: DEPRECATED - Delete security rule objects in bulk
 enabled: true
 entry_point: bulk_delete_policies.py
 parameters:
@@ -24,4 +24,4 @@ parameters:
   pre_rulebase:
     type: boolean
     description: When using Panorama, denotes whether the policy should be added the Pre or Post Rulebase. Defaults to Pre Rulebase.
-    default: True
+    default: true

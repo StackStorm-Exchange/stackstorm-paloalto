@@ -1,7 +1,7 @@
 ---
 name: bulk_delete_service_groups
 runner_type: python-script
-description: Delete service groups in bulk
+description: DEPRECATED - Delete service groups in bulk
 enabled: true
 entry_point: bulk_delete_objects.py
 parameters:

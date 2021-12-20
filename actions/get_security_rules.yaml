@@ -1,7 +1,7 @@
 ---
 name: get_security_rules
 runner_type: python-script
-description: Get Security Rule(s) from the device
+description: DEPRECATED - Get Security Rule(s) from the device
 enabled: true
 entry_point: get_object.py
 parameters:

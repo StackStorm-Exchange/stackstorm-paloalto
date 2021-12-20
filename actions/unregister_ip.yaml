@@ -1,7 +1,7 @@
 ---
 name: unregister_ip
 runner_type: python-script
-description: Unregister an IP/tag(s) or update an existing registration
+description: DEPRECATED - Unregister an IP/tag(s) or update an existing registration
 enabled: true
 entry_point: unregister_ip.py
 parameters:

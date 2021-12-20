@@ -1,7 +1,7 @@
 ---
 name: delete_service_group
 runner_type: python-script
-description: Delete a service group
+description: DEPRECATED - Delete a service group
 enabled: true
 entry_point: delete_single_object.py
 parameters:

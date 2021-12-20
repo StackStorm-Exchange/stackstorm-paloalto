@@ -1,4 +1,5 @@
 ---
+# Example (Original)
 firewall:
   default:
     host: prodfirewall.corp.lan
@@ -8,3 +9,16 @@ firewall:
     api_username: admin
     api_password: admin
     port: 8443
+
+# Example (New)
+connections:
+  testfw:
+    hostname: firewall.domain.com
+    api_username: fwuser
+    api_password: fwpass
+  panorama:
+    hostname: panorama.domain.com
+    api_key: reallylonghexadecimalapikey
+  productionfw:
+    hostname: firewall.domain.com
+    api_key: "{{ st2kv.system.production_fw_apikey | decrypt_kv }}"
